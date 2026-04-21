@@ -1,73 +1,57 @@
-# React + TypeScript + Vite
+# Kanban Task Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple Kanban board built with React and TypeScript that allows users to add, edit, delete, and move tasks between columns using drag and drop. Tasks are saved locally so they persist after refreshing the page.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## How to Run the Project
 
-## React Compiler
+1. Install dependencies:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Start the development server:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+3. Open in your browser:
+
+```
+http://localhost:5173
+```
+
+---
+
+## Libraries Used
+
+* **React** – For building the user interface
+* **TypeScript** – For type safety and better code maintainability
+* **Vite** – For fast development and build tooling
+* **Zustand** – For global state management
+* **@dnd-kit/core** – For drag-and-drop functionality
+* **react-hot-toast** – For showing notifications
+* **Tailwind CSS** – For styling the UI
+
+---
+
+## Architectural Decision
+
+**Decision:**
+Using **Zustand** for global state management combined with **localStorage** for data persistence.
+
+**Why:**
+Zustand was chosen because it is lightweight, simple, and requires minimal boilerplate compared to Redux. It allows centralized task management while keeping components clean and maintainable.
+localStorage was used to persist tasks locally so users do not lose their data when refreshing the page, without needing a backend.
+
+## Features
+
+- Add new tasks
+- Edit existing tasks
+- Delete tasks
+- Drag and drop tasks between columns
+- Persistent storage using localStorage
+- Toast notifications for actions
