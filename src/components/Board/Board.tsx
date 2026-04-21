@@ -16,12 +16,14 @@ export default function Board() {
   const moveCard = useBoardStore((state) => state.moveCard);
   const statuses = ['To Do', 'In Progress', 'Done'] as const;
 
+  // Configure drag sensors with an activation constraint to prevent accidental drags
   const sensors = useSensors(
     useSensor(PointerSensor, {
-      activationConstraint: { distance: 50 },
+      activationConstraint: { distance: 8 },
     })
   );
 
+  // Handle drag end event to move the card to the new status column
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
     if (!over) return;
@@ -38,6 +40,7 @@ export default function Board() {
       collisionDetection={closestCorners} 
       onDragEnd={handleDragEnd}
     >
+      {/* Board Content */}
       <div className="min-h-screen w-full bg-[#f8fafc] p-8">
         
         <div className="max-w-7xl mx-auto flex justify-center md:justify-between  items-center mb-6 lg:mb-10 flex-wrap">
@@ -54,7 +57,7 @@ export default function Board() {
             <span>Add New Task</span>
           </button>
         </div>
-
+        {/* Column Headers */}
         <div className="max-w-7xl mx-auto flex gap-8 overflow-x-auto pb-4 flex-wrap">
           {statuses.map((status) => (
             <Column key={status} status={status} id={status} />
@@ -62,6 +65,7 @@ export default function Board() {
         </div>
       </div>
 
+      {/* Add Card Form */}
       <AddCardForm 
         isOpen={isAddOpen} 
         onClose={() => setIsAddOpen(false)} 

@@ -11,15 +11,18 @@ export default function Card({ card }: { card: CardType }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const { deleteCard, moveCard } = useBoardStore();
 
+  // Set up draggable functionality using useDraggable hook from dnd-kit
   const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
     id: card.id,
   });
 
+  // Calculate dynamic styles for the card based on its dragging state and position
   const style = {
     transform: CSS.Translate.toString(transform),
     zIndex: isDragging ? 50 : 'auto',
     opacity: isDragging ? 0.6 : 1,
   };
+
 
   const borderColors = {
     'To Do': 'border-l-blue-400',
@@ -27,6 +30,7 @@ export default function Card({ card }: { card: CardType }) {
     'Done': 'border-l-emerald-400',
   };
 
+  // Handle card deletion with a confirmation toast notification
   const handleDelete = () => {
     deleteCard(card.id);
     toast.error('Task deleted successfully', {
@@ -47,6 +51,7 @@ export default function Card({ card }: { card: CardType }) {
         className={`relative group bg-white p-4 rounded-xl shadow-sm border border-gray-200 border-l-4 ${borderColors[card.status]}
           cursor-grab active:cursor-grabbing ${isDragging ? 'shadow-xl border-blue-400' : ''}`}
       >
+        {/* Card Content */}
         <div className="flex justify-between items-start mb-2 flex-wrap">
           <h3 className="font-semibold text-gray-800 leading-tight pr-8">{card.title}</h3>
 
@@ -85,7 +90,7 @@ export default function Card({ card }: { card: CardType }) {
           ))}
         </div>
       </div>
-
+      {/* Edit Card Form */}
       <AddCardForm
         isOpen={isEditOpen}
         onClose={() => setIsEditOpen(false)}

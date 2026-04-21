@@ -14,6 +14,7 @@ export default function AddCardForm({ isOpen, onClose, mode, initialData }: Task
   const [description, setDescription] = useState('');
   const [status, setStatus] = useState<Card['status']>('To Do');
 
+  // Initialize form fields when modal opens in edit mode
   useEffect(() => {
     if (mode === 'edit' && initialData) {
       setTitle(initialData.title);
@@ -28,6 +29,7 @@ export default function AddCardForm({ isOpen, onClose, mode, initialData }: Task
 
   if (!isOpen) return null;
 
+  // Handle form submission for both adding and editing tasks
   const handleSubmit = (e:FormEvent) => {
     e.preventDefault();
     if (!title.trim()) return;

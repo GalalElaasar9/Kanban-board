@@ -21,6 +21,7 @@ export default function Column({ status, id }: ColumnProps) {
 
   const allCards = useBoardStore((state) => state.cards);
 
+  // Memoize the filtered cards for the column to optimize performance and prevent unnecessary re-renders
   const columnCards = useMemo(() => {
     return allCards.filter((card) => card.status === status);
   }, [allCards, status]);
@@ -36,7 +37,7 @@ export default function Column({ status, id }: ColumnProps) {
           {columnCards.length === 0 ? 'No Tasks' : `${columnCards.length} ${columnCards.length === 1 ? 'Task' : 'Tasks'}`}
         </span>
       </div>
-      
+      {/* Column Content */}
       <div className="flex flex-col gap-3 flex-1">
         {columnCards.length === 0 ? (
           <p className="text-sm text-gray-400 text-center mt-6 italic">
