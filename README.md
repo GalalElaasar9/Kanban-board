@@ -28,14 +28,14 @@ http://localhost:5173
 
 ## Libraries Used
 
-* **React** – UI library
-* **TypeScript** – Static typing
-* **Vite** – Fast development tool
-* **Zustand** – Global state management
-* **Zustand Persist Middleware** – State persistence using localStorage
-* **@dnd-kit/core** – Drag-and-drop functionality
-* **react-hot-toast** – Notifications
-* **Tailwind CSS** – Styling
+- **React** – UI library
+- **TypeScript** – Static typing
+- **Vite** – Fast development tool
+- **Zustand** – Global state management
+- **Zustand Persist Middleware** – State persistence using localStorage
+- **@dnd-kit/core** – Drag-and-drop functionality
+- **react-hot-toast** – Notifications
+- **Tailwind CSS** – Styling
 
 ---
 
