@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { createJSONStorage, persist } from 'zustand/middleware';
 import initialData from '../data/cards.json';
 
 export interface Card {
@@ -53,6 +53,7 @@ export const useBoardStore = create<BoardState>()(
     }),
     {
       name: 'kanban-storage',
+      storage:createJSONStorage (() => localStorage),
     }
   )
 );
