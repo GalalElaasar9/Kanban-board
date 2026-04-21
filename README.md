@@ -1,6 +1,6 @@
 # Kanban Task Board
 
-A simple Kanban board built with React and TypeScript that allows users to add, edit, delete, and move tasks between columns using drag and drop. Tasks are saved locally so they persist after refreshing the page.
+A simple Kanban board built with React and TypeScript that allows users to add, edit, delete, and move tasks between columns using drag and drop. Tasks are persisted locally using Zustand with localStorage.
 
 ---
 
@@ -28,24 +28,24 @@ http://localhost:5173
 
 ## Libraries Used
 
-* **React** – For building the user interface
-* **TypeScript** – For type safety and better code maintainability
-* **Vite** – For fast development and build tooling
-* **Zustand** – For global state management
-* **@dnd-kit/core** – For drag-and-drop functionality
-* **react-hot-toast** – For showing notifications
-* **Tailwind CSS** – For styling the UI
+* **React** – UI library
+* **TypeScript** – Static typing
+* **Vite** – Fast development tool
+* **Zustand** – Global state management
+* **Zustand Persist Middleware** – State persistence using localStorage
+* **@dnd-kit/core** – Drag-and-drop functionality
+* **react-hot-toast** – Notifications
+* **Tailwind CSS** – Styling
 
 ---
 
 ## Architectural Decision
 
 **Decision:**
-Using **Zustand** for global state management combined with **localStorage** for data persistence.
+Using **Zustand with persist middleware** for state management and data persistence.
 
 **Why:**
-Zustand was chosen because it is lightweight, simple, and requires minimal boilerplate compared to Redux. It allows centralized task management while keeping components clean and maintainable.
-localStorage was used to persist tasks locally so users do not lose their data when refreshing the page, without needing a backend.
+Zustand was chosen because it is lightweight and requires minimal boilerplate compared to Redux. The persist middleware was used to automatically store tasks in localStorage, ensuring that user data remains available after page refresh without requiring a backend.
 
 ## Features
 
