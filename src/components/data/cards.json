@@ -1,0 +1,40 @@
+{
+  "cards": [
+    {
+      "id": "1",
+      "title": "Setup Project Structure",
+      "description": "Initialize React app with TypeScript and folder architecture.",
+      "status": "Done"
+    },
+    {
+      "id": "2",
+      "title": "Install Dependencies",
+      "description": "Install Zustand, Tailwind CSS, and Lucide React icons.",
+      "status": "Done"
+    },
+    {
+      "id": "3",
+      "title": "Implement Zustand Store",
+      "description": "Create the global store with actions for CRUD operations and persistence.",
+      "status": "In Progress"
+    },
+    {
+      "id": "4",
+      "title": "Design Card Component",
+      "description": "Build a reusable card component with edit and delete functionality.",
+      "status": "To Do"
+    },
+    {
+      "id": "5",
+      "title": "Add Drag and Drop",
+      "description": "Implement smooth drag and drop movement between columns.",
+      "status": "To Do"
+    },
+    {
+      "id": "6",
+      "title": "Responsive Refinement",
+      "description": "Ensure the board looks great on mobile and tablet screens.",
+      "status": "To Do"
+    }
+  ]
+}
